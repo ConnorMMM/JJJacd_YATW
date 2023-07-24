@@ -7,7 +7,7 @@ namespace BladeWaltz.AI
 	{
 		protected override void Behaviour()
 		{
-			m_agent.SetDestination(m_player.transform.position);
+			ChaseTarget(); // Seek
 		}
 	}
 }

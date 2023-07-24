@@ -14,9 +14,10 @@ namespace BladeWaltz.AI
 		[Header("AI Stats")] 
 		[SerializeField] private float m_health;
 		[SerializeField] private float m_moveSpeed;
+		[SerializeField] public float m_turnSpeed;
 
 		[Header("Weapon Stats")]
-		[SerializeField] private GameObject m_projectilePrefab;
+		[SerializeField] public GameObject m_projectilePrefab;
 		[SerializeField] private float m_damage;
 		[SerializeField] private float m_projectileSpeed;
     
@@ -24,11 +25,13 @@ namespace BladeWaltz.AI
 		protected GameManager m_gameManager;
 		protected GameObject m_player;
 		protected float m_distance;
+		protected Animator m_animator;
 
 		// Start is called before the first frame update
 		private void Awake()
 		{
 			m_agent = GetComponent<NavMeshAgent>();
+			m_animator = GetComponent<Animator>();
 			m_gameManager = FindObjectOfType<GameManager>();
 			
 			// 1 in 20 chance for enemy to give speed on death
@@ -44,11 +47,41 @@ namespace BladeWaltz.AI
 		{
 			m_player = m_gameManager.m_player;
 			m_distance = Vector3.Distance(transform.position, m_player.transform.position);
+
+			transform.position += transform.right * Time.fixedDeltaTime;
 			
 			// Custom behaviours for sub classes
 			Behaviour();
 		}
 
+		protected void FleeTarget()
+		{
+			m_animator.SetBool("Attack", false);
+			m_animator.SetTrigger("Move");
+			Vector3 dirToPlayer = transform.position - m_player.transform.position;
+			Vector3 newPos = transform.position + dirToPlayer;
+			m_agent.SetDestination(newPos);
+		}
+
+		protected void ChaseTarget()
+		{
+			m_animator.SetBool("Attack", false);
+			m_animator.SetTrigger("Move");
+			m_agent.SetDestination(m_player.transform.position);
+		}
+
+		protected void AttackTarget()
+		{
+			m_animator.SetBool("Attack", true);
+		}
+		
+		protected void FaceTarget()
+		{
+			Vector3 dirToPlayer = (transform.position - m_player.transform.position).normalized;
+			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(dirToPlayer.x, 0f, dirToPlayer.z));
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_turnSpeed);
+		}
+		
 		private void IsSpecial()
 		{
 			// Change enemy colour or something
