@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace YATW.DesignPatterns
+namespace BladeWaltz.DesignPatterns
 {
     public abstract class Singleton<TYPE> : MonoBehaviour where TYPE : Singleton<TYPE>
     {
