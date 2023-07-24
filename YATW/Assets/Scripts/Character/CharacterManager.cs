@@ -21,6 +21,7 @@ namespace BladeWaltz.Character
 
 		[SerializeField] private float m_moveSpeed;
 		[SerializeField] private float m_rotationSpeed;
+		[SerializeField] private bool m_reverseRotation = false;
 		private Vector2 m_moveInput;
 		private bool m_hasInput = false;
 
@@ -78,10 +79,12 @@ namespace BladeWaltz.Character
 			
 			m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_moveSpeed, ForceMode.Impulse);
 
+			if(!m_reverseRotation)
+				m_spinningTop.transform.eulerAngles += new Vector3(0, m_rotationSpeed * Time.fixedDeltaTime, 0);
+			else
+				m_spinningTop.transform.eulerAngles -= new Vector3(0, m_rotationSpeed * Time.fixedDeltaTime, 0);
 			
-			m_spinningTop.transform.eulerAngles += new Vector3(0, m_rotationSpeed * Time.fixedDeltaTime, 0);
-			
-			m_rotationSpeed -= m_rotationSpeedLoss * Time.fixedDeltaTime;
+			//m_rotationSpeed -= m_rotationSpeedLoss * Time.fixedDeltaTime;
 			if(m_rotationSpeed <= 0)
 			{
 				m_rotationSpeed = m_maxRotationSpeed;
@@ -101,9 +104,14 @@ namespace BladeWaltz.Character
 			Debug.Log("Dash True");
 		}
 
-		public void HitObject(Vector3 _force)
+		public void ApplyForce(Vector3 _force)
 		{
 			m_rb.AddForce(_force, ForceMode.Impulse);
+		}
+
+		public void ModifyVelocity(float _percentage)
+		{
+			m_rb.velocity *= _percentage;
 		}
 	}
 }

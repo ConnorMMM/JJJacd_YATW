@@ -21,9 +21,9 @@ public class Obstacle : MonoBehaviour
             Debug.Log("Collision");
             CharacterManager controller;
             if(_collision.gameObject.TryGetComponent(out controller))
-                controller.HitObject(collisionNormal * m_speedLostOnHit);
+                controller.ApplyForce(collisionNormal * m_speedLostOnHit);
             else if(_collision.transform.parent.TryGetComponent(out controller))
-                controller.HitObject(collisionNormal * m_speedLostOnHit);
+                controller.ApplyForce(collisionNormal * m_speedLostOnHit);
             
             if(m_isDestructible)
                 Destroy(gameObject);
