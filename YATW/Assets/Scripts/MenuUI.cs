@@ -6,8 +6,6 @@ using UnityEngine;
 public class MenuUI : MonoBehaviour
 
 {
-    public GameObject optionsPrompt;
-
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);
@@ -22,13 +20,13 @@ public class MenuUI : MonoBehaviour
     #endif
     }
 
-    public void OpenOptions()
+    public void PromptOpen(GameObject prompt)
     {
-        optionsPrompt.SetActive(true);
+        prompt.SetActive(true);
     }
 
-    public void CloseOptions()
+    public void PromptClose(GameObject prompt)
     {
-        optionsPrompt.SetActive(false);
+        prompt.SetActive(false);
     }
 }
