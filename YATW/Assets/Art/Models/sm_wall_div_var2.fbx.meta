@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5082049167d67b24fa8339d545f8d9d8
+guid: b577d752974d13d4f87ec5e4015d7d73
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: t_fern_tree
-    second: {fileID: 2100000, guid: b83e7c988bad9e84eae9d6045da65fcc, type: 2}
+      name: wall_div_var2
+    second: {fileID: 2100000, guid: 3e6b9688385683d48bd296fdb85dfd09, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

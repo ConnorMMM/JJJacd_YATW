@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: da9f1747e837ee1469ec158a91eba8e7
+guid: ee168f61c29bee544a62d45b0f0c8648
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t_fern_leaf
+    second: {fileID: 2100000, guid: e4375d5c39f14c247bf0816aaf0f18da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t_fern_tree
+    second: {fileID: 2100000, guid: b83e7c988bad9e84eae9d6045da65fcc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
