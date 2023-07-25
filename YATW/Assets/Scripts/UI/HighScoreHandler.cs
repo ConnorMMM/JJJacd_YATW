@@ -30,6 +30,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i + 1;
 					currentHighScore.m_name = m_entries[i].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 			}
 			else
@@ -42,6 +43,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i + 1;
 					currentHighScore.name = m_entries[i].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 				for(int i = m_entries.Count; i <= 4; i++)
 				{
@@ -51,6 +53,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i;
 					currentHighScore.m_name = "SUS";
 					currentHighScore.m_score = 000;
+					currentHighScore.m_time = "00:00";
 				}
 			}
 		}
@@ -87,6 +90,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i + 1;
 					currentHighScore.m_name = m_entries[i].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 			}
 			else
@@ -98,6 +102,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i;
 					currentHighScore.m_name = m_entries[i - 1].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i - 1].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 				for(int i = m_entries.Count + 1; i <= 4; i++)
 				{
@@ -105,6 +110,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i;
 					currentHighScore.m_name = "SUS";
 					currentHighScore.m_score = 000;
+					currentHighScore.m_time = "00:00";
 				}
 			}
 		}

@@ -9,8 +9,11 @@ namespace BladeWaltz.JsonSaving
 {
 	public class InputHandler : MonoBehaviour
 	{
-		[SerializeField] private TMP_Text m_name;
+		[SerializeField] private TMP_Text m_letterOne;
+		[SerializeField] private TMP_Text m_letterTwo;
+		[SerializeField] private TMP_Text m_letterThree;
 		[SerializeField] private TMP_Text m_score;
+		[SerializeField] private TMP_Text m_time;
 		[SerializeField] private string m_fileName;
 
 		public List<InputEntry> m_entries = new List<InputEntry>();
@@ -35,8 +38,8 @@ namespace BladeWaltz.JsonSaving
 
 		public void AddInfoToList()
 		{
-			string nameInput = "" + m_name;
-			m_entries.Add(new InputEntry(nameInput, m_score.text));
+			string nameInput = "" + m_letterOne.text + m_letterTwo.text + m_letterThree.text;
+			m_entries.Add(new InputEntry(nameInput, m_score.text, m_time.text));
 
 			JsonHandler.SaveToJson<InputEntry>(m_entries, m_fileName);
 		}

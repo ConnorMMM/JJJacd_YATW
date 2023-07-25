@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '#####'
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1b2f95d04185e140bf22ab2deab0da2, type: 2}
   m_sharedMaterial: {fileID: 1014528157093921725, guid: b1b2f95d04185e140bf22ab2deab0da2, type: 2}
@@ -2667,7 +2667,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 447844753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1972994884}
+        m_TargetAssemblyTypeName: BladeWaltz.UI.LetterCycle, Assembly-CSharp
+        m_MethodName: UpArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &447844753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3948,7 +3960,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 648555428}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1658069587}
+        m_TargetAssemblyTypeName: BladeWaltz.UI.LetterCycle, Assembly-CSharp
+        m_MethodName: UpArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &648555428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5863,6 +5887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029232676}
   - component: {fileID: 1029232677}
+  - component: {fileID: 1029232678}
   m_Layer: 5
   m_Name: Slot2
   m_TagString: Untagged
@@ -5919,6 +5944,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1029232678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029232675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e6b9c7ca9d4ce9ab8b3f22bfddaa1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_letter: {fileID: 1604329080}
+  m_letters: 4100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a00
 --- !u!1 &1034265950
 GameObject:
   m_ObjectHideFlags: 0
@@ -12397,7 +12436,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1320182428}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1029232678}
+        m_TargetAssemblyTypeName: BladeWaltz.UI.LetterCycle, Assembly-CSharp
+        m_MethodName: DownArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1320182428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12518,7 +12569,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1337436794}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1658069587}
+        m_TargetAssemblyTypeName: BladeWaltz.UI.LetterCycle, Assembly-CSharp
+        m_MethodName: DownArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1337436794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14188,7 +14251,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1655815906}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1972994884}
+        m_TargetAssemblyTypeName: BladeWaltz.UI.LetterCycle, Assembly-CSharp
+        m_MethodName: DownArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1655815906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14334,6 +14409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1658069585}
   - component: {fileID: 1658069586}
+  - component: {fileID: 1658069587}
   m_Layer: 5
   m_Name: Slot1
   m_TagString: Untagged
@@ -14390,6 +14466,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1658069587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658069584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e6b9c7ca9d4ce9ab8b3f22bfddaa1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_letter: {fileID: 1056041001}
+  m_letters: 4100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a00
 --- !u!1 &1659010602
 GameObject:
   m_ObjectHideFlags: 0
@@ -14670,6 +14760,7 @@ GameObject:
   - component: {fileID: 1676858704}
   - component: {fileID: 1676858703}
   - component: {fileID: 1676858702}
+  - component: {fileID: 1676858706}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -14763,6 +14854,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1676858706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676858701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b94c9c364ae42cab5c8a55b68730d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_letterOne: {fileID: 1056041001}
+  m_letterTwo: {fileID: 1604329080}
+  m_letterThree: {fileID: 1769626888}
+  m_score: {fileID: 347652384}
+  m_time: {fileID: 0}
+  m_fileName: HighScores.json
+  m_entries: []
 --- !u!1 &1682801074
 GameObject:
   m_ObjectHideFlags: 0
@@ -16196,7 +16306,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1882310681}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1029232678}
+        m_TargetAssemblyTypeName: BladeWaltz.UI.LetterCycle, Assembly-CSharp
+        m_MethodName: UpArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1882310681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16656,25 +16778,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 1676858706}
+        m_TargetAssemblyTypeName: BladeWaltz.JsonSaving.InputHandler, Assembly-CSharp
+        m_MethodName: AddInfoToList
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SampleScene
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+        m_TargetAssemblyTypeName: BladeWaltz.JsonSaving.InputHandler, Assembly-CSharp
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17019,6 +17141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972994882}
   - component: {fileID: 1972994883}
+  - component: {fileID: 1972994884}
   m_Layer: 5
   m_Name: Slot3
   m_TagString: Untagged
@@ -17075,6 +17198,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1972994884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972994881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e6b9c7ca9d4ce9ab8b3f22bfddaa1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_letter: {fileID: 1769626888}
+  m_letters: 4100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a00
 --- !u!1 &1997189029
 GameObject:
   m_ObjectHideFlags: 0
