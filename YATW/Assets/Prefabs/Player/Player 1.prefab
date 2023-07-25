@@ -168,8 +168,8 @@ MonoBehaviour:
   m_rotationSpeed: 0
   m_reverseRotation: 0
   m_moveSpeed: 80
-  m_dashCooldown: 1
-  m_dashStrength: 20
+  m_dashCooldown: 2
+  m_dashStrength: 25
   m_dashRotationIncrease: 200
   dash: {fileID: 7399023758078161511}
   dashSounds:
