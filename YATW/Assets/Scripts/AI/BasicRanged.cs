@@ -4,12 +4,15 @@ namespace BladeWaltz.AI
 {
 	public class BasicRanged : BaseEnemy
 	{
+		[Header("Timers")]
+		[Tooltip("Range that the enemy will stay at.")]
 		[SerializeField] private float m_fleeRange;
+		[Tooltip("Time between shots.")]
 		[SerializeField] private float m_timerReset;
-
+		[Tooltip("Starting timer till the enemy shoots.")]
+		public float m_attackTimer;
 		[SerializeField] private GameObject m_gun;
 		
-		public float m_attackTimer;
 		public bool m_attack;
 		
 		protected override void Behaviour()
@@ -18,9 +21,10 @@ namespace BladeWaltz.AI
 			if(m_attackTimer <= 0)
 			{
 				m_attack = true;
+				m_attackTimer = m_timerReset;
 			}
 
-			if(Vector3.Distance(transform.position, m_player.transform.position) < m_fleeRange && m_attack == false) // Flee
+			if(Vector3.Distance(transform.position, m_player.transform.position) < m_fleeRange) // Flee
 			{
 				FaceTarget();
 				FleeTarget();
@@ -29,7 +33,10 @@ namespace BladeWaltz.AI
 			{
 				FaceTarget();
 				AttackTarget();
-				Instantiate(m_projectilePrefab, m_gun.transform);
+				GameObject bullet = Instantiate(m_projectilePrefab, transform.position, Quaternion.identity, this.transform);
+				bullet.transform.parent = null;
+				bullet.GetComponent<BasicBullet>().m_speed = m_projectileSpeed;
+				
 				m_attack = false;
 				m_attackTimer = m_timerReset;
 			}
@@ -39,7 +46,5 @@ namespace BladeWaltz.AI
 				ChaseTarget();
 			}
 		}
-
-
 	}
 }

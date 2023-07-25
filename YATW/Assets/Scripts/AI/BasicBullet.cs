@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using BladeWaltz.Managers;
 
+using System;
 using System.Security.Cryptography;
 
 namespace BladeWaltz.AI
 {
-	public class Bullet : MonoBehaviour
+	public class BasicBullet : BaseBullet
 	{
 		private Transform m_player;
 		private GameManager m_gameManager;
-		[SerializeField] private float m_speed;
 
-		private float m_timer = 5;
 		private Vector3 m_dirToPlayer;
 		
 		// Start is called before the first frame update
@@ -21,19 +20,12 @@ namespace BladeWaltz.AI
 		{
 			m_gameManager = FindObjectOfType<GameManager>();
 			m_player = m_gameManager.m_player.transform;
-			m_dirToPlayer = (GetComponentInParent<Transform>().position - m_player.position).normalized;
+			m_dirToPlayer = (transform.position - m_player.position).normalized;
 		}
 
-		// Update is called once per frame
-		private void FixedUpdate()
+		protected override void Behaviour()
 		{
-			m_timer -= Time.deltaTime;
-
-			transform.position -= m_dirToPlayer * Time.deltaTime;
-			if(m_timer <= 0)
-			{
-				Destroy(this);
-			}
+			transform.position -= m_dirToPlayer * Time.deltaTime * m_speed;
 		}
 	}
 

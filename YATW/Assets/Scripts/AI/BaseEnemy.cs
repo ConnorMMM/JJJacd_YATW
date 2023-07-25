@@ -5,6 +5,10 @@ using UnityEngine.AI;
 
 using BladeWaltz.Managers;
 
+using System;
+
+using Random = UnityEngine.Random;
+
 namespace BladeWaltz.AI
 {
 	[RequireComponent(typeof(NavMeshAgent))]
@@ -12,14 +16,15 @@ namespace BladeWaltz.AI
 	{
     
 		[Header("AI Stats")] 
-		[SerializeField] private float m_health;
-		[SerializeField] private float m_moveSpeed;
+		[SerializeField] public float m_health;
+		[SerializeField] public float m_moveSpeed;
+		[Tooltip("Keep low, does not change much.")]
 		[SerializeField] public float m_turnSpeed;
 
 		[Header("Weapon Stats")]
 		[SerializeField] public GameObject m_projectilePrefab;
-		[SerializeField] private float m_damage;
-		[SerializeField] private float m_projectileSpeed;
+		[SerializeField] public float m_damage;
+		[SerializeField] public float m_projectileSpeed;
     
 		protected NavMeshAgent m_agent;
 		protected GameManager m_gameManager;
@@ -27,13 +32,18 @@ namespace BladeWaltz.AI
 		protected float m_distance;
 		protected Animator m_animator;
 
+		public bool m_left;
+		public bool m_right;
 		// Start is called before the first frame update
 		private void Awake()
 		{
 			m_agent = GetComponent<NavMeshAgent>();
 			m_animator = GetComponent<Animator>();
 			m_gameManager = FindObjectOfType<GameManager>();
-			
+
+			m_agent.speed = m_moveSpeed;
+			m_agent.angularSpeed = m_turnSpeed;
+
 			// 1 in 20 chance for enemy to give speed on death
 			int num = Random.Range(1, 20);
 			if(num == 1)
@@ -47,9 +57,9 @@ namespace BladeWaltz.AI
 		{
 			m_player = m_gameManager.m_player;
 			m_distance = Vector3.Distance(transform.position, m_player.transform.position);
-
-			transform.position += transform.right * Time.fixedDeltaTime;
 			
+			transform.position += transform.right * Time.fixedDeltaTime;
+
 			// Custom behaviours for sub classes
 			Behaviour();
 		}
@@ -86,7 +96,15 @@ namespace BladeWaltz.AI
 		{
 			// Change enemy colour or something
 		}
-    
+
+		private void OnTriggerEnter(Collider _col)
+		{
+			if(_col.CompareTag("Player") && m_health <= 0)
+			{
+				Destroy(gameObject);
+			}
+		}
+
 		protected abstract void Behaviour();
 	}
 }
