@@ -4,6 +4,8 @@ using UnityEngine;
 
 using BladeWaltz.DesignPatterns;
 
+using System;
+
 namespace BladeWaltz.Managers
 {
 	public class GameManager : Singleton<GameManager>
@@ -26,7 +28,6 @@ namespace BladeWaltz.Managers
 
 		protected override void Awake()
 		{
-			base.Awake();
 			m_timer = m_startTime * 60;
 		}
 

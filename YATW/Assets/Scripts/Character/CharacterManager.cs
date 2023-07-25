@@ -103,6 +103,7 @@ namespace BladeWaltz.Character
 			{
 				m_rotationSpeed = 0;
 				//TODO: Add code for death
+				Destroy(gameObject);
 			}
 			else if(m_rotationSpeed > m_maxRotationSpeed)
 				m_rotationSpeed = m_maxRotationSpeed;
@@ -126,6 +127,16 @@ namespace BladeWaltz.Character
 		{
 			m_reverseRotation = !m_reverseRotation;
 			m_arms.transform.eulerAngles = new Vector3(m_arms.transform.eulerAngles.x + 180f, m_arms.transform.eulerAngles.y, m_arms.transform.eulerAngles.z);
+		}
+
+		public float GetDamage()
+		{
+			return m_rotationSpeed * 0.01f * m_damageModifier;
+		}
+
+		public void TakeDamage(float _damage)
+		{
+			AddRotationSpeed(-_damage);
 		}
 	}
 }
