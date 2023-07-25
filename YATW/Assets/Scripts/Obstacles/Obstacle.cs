@@ -6,16 +6,20 @@ using UnityEngine;
 using BladeWaltz.Character;
 
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private float m_force = 300;
     [SerializeField] private float m_rotationDecrease = -300f;
 
+    [SerializeField] private AudioSource hitSound;
+    [SerializeField] private AudioClip[] soundList;
     private void OnCollisionEnter(Collision _collision)
     {
         if(_collision.gameObject.CompareTag("Player"))
         {
+            hitSound.PlayOneShot(soundList[Random.Range(0, soundList.Length)]);
             Vector3 collisionNormal = _collision.GetContact(0).normal;
             
             Debug.Log("Collision");
