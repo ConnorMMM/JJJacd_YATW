@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing/AJ Testing.unity
     guid: d1fea44f4bff03747a63ad246eccd44a
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 5fc37caaa4306434b9791828fc2c5b6e, type: 2}

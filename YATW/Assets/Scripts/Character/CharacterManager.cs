@@ -32,6 +32,8 @@ namespace BladeWaltz.Character
 		[SerializeField] private float m_dashStrength = 20f;
 		[SerializeField] private float m_dashRotationIncrease = 200;
 		private bool m_canDash;
+		[SerializeField] private AudioSource dash;
+		[SerializeField] private AudioClip[] dashSounds;
 		
 		private void Awake()
 		{
@@ -62,6 +64,7 @@ namespace BladeWaltz.Character
 			{
 				m_rb.AddForce(m_rb.velocity.normalized * m_dashStrength, ForceMode.Impulse);
 				AddRotationSpeed(m_dashRotationIncrease);
+				dash.PlayOneShot(dashSounds[0]);
 				StartCoroutine(DashCooldown());
 			}
 		}
@@ -71,6 +74,7 @@ namespace BladeWaltz.Character
 			m_canDash = false;
 			yield return new WaitForSeconds(m_dashCooldown);
 			m_canDash = true;
+			dash.PlayOneShot(dashSounds[1]);
 		}
 		
 
