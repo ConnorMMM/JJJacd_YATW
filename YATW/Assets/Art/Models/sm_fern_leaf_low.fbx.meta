@@ -3,7 +3,12 @@ guid: 01f12c1a791c5f64bb5dd79802a8b1b2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t_fern_leaf
+    second: {fileID: 2100000, guid: e4375d5c39f14c247bf0816aaf0f18da, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
