@@ -12,6 +12,7 @@ namespace BladeWaltz.AI
 		private void Start()
 		{
 			m_dirToParent = (transform.position - m_parent.position).normalized;
+			m_dirToParent = new Vector3(m_dirToParent.x, 0, m_dirToParent.z);
 		}
 
 		protected override void Behaviour()

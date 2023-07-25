@@ -12,6 +12,8 @@ namespace BladeWaltz.Character
 	{
 		[Header("Components")]
 		[SerializeField] private GameObject m_arms;
+		[SerializeField] private GameObject m_face;
+		[SerializeField] private ParticleSystem m_wind;
 		private Rigidbody m_rb;
 		
 		[Space(10), Header("Settings")]
@@ -44,6 +46,7 @@ namespace BladeWaltz.Character
 			m_rotationSpeed = m_startingRotationSpeed;
 			m_reverseRotation = false;
 			m_canDash = true;
+			m_wind.Stop();
 			m_rb = GetComponent<Rigidbody>();
 		}
 
@@ -55,8 +58,11 @@ namespace BladeWaltz.Character
 			m_arms.transform.eulerAngles += m_reverseRotation ? -rotationChange : rotationChange;
 
 			AddRotationSpeed(-m_rotationDrag * Time.fixedDeltaTime);
-			float pitch = (m_rotationSpeed / 1000) * 2;
 
+			float degree = Mathf.Atan2(m_rb.velocity.normalized.x, m_rb.velocity.normalized.z) * Mathf.Rad2Deg;
+			m_face.transform.eulerAngles = new Vector3(0, degree, 0);
+			
+			float pitch = (m_rotationSpeed / 1000) * 2;
 			movementSound.SetFloat("Pitch", pitch);
 		}
 
@@ -71,6 +77,12 @@ namespace BladeWaltz.Character
 			{
 				m_rb.AddForce(m_rb.velocity.normalized * m_dashStrength, ForceMode.Impulse);
 				AddRotationSpeed(m_dashRotationIncrease);
+				
+				float degree = Mathf.Atan2(m_rb.velocity.normalized.x, m_rb.velocity.normalized.z) * Mathf.Rad2Deg;
+				m_wind.transform.eulerAngles = new Vector3(0, degree, 0);
+				m_wind.Play();
+				m_wind.transform.eulerAngles = new Vector3(0, degree, 0);
+				
 				dash.PlayOneShot(dashSounds[0]);
 				StartCoroutine(DashCooldown());
 			}

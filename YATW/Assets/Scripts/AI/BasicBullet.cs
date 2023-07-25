@@ -21,6 +21,7 @@ namespace BladeWaltz.AI
 			m_gameManager = GameManager.Instance;
 			m_player = m_gameManager.m_player.transform;
 			m_dirToPlayer = (transform.position - m_player.position).normalized;
+			m_dirToPlayer = new Vector3(m_dirToPlayer.x, 0, m_dirToPlayer.z);
 		}
 
 		protected override void Behaviour()
