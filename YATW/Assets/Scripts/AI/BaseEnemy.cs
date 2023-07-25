@@ -1,3 +1,5 @@
+using BladeWaltz.Character;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +30,7 @@ namespace BladeWaltz.AI
     
 		protected NavMeshAgent m_agent;
 		protected GameManager m_gameManager;
+		protected CharacterManager m_characterManager;
 		protected GameObject m_player;
 		protected float m_distance;
 		protected Animator m_animator;
@@ -39,7 +42,9 @@ namespace BladeWaltz.AI
 		{
 			m_agent = GetComponent<NavMeshAgent>();
 			m_animator = GetComponent<Animator>();
-			m_gameManager = FindObjectOfType<GameManager>();
+			m_gameManager = GameManager.Instance;
+			m_player = m_gameManager.m_player;
+			m_characterManager = m_player.GetComponent<CharacterManager>();
 
 			m_agent.speed = m_moveSpeed;
 			m_agent.angularSpeed = m_turnSpeed;
@@ -55,7 +60,6 @@ namespace BladeWaltz.AI
 		// Update is called once per frame
 		private void FixedUpdate()
 		{
-			m_player = m_gameManager.m_player;
 			m_distance = Vector3.Distance(transform.position, m_player.transform.position);
 			
 			transform.position += transform.right * Time.fixedDeltaTime;
@@ -97,11 +101,23 @@ namespace BladeWaltz.AI
 			// Change enemy colour or something
 		}
 
-		private void OnTriggerEnter(Collider _col)
+		private void OnCollisionEnter(Collision _col)
 		{
-			if(_col.CompareTag("Player") && m_health <= 0)
+			if(_col.gameObject.CompareTag("Player"))
 			{
-				Destroy(gameObject);
+				//Remove health
+				m_health -= m_characterManager.GetDamage();
+
+				if(m_health <= 0)
+				{
+					m_characterManager.HitPickUp(-m_damage * 0.4f);
+					Destroy(gameObject);
+				}
+				else
+				{
+					Vector3 collisionNormal = _col.GetContact(0).normal;
+					m_characterManager.HitWall(collisionNormal * -40, -m_damage);
+				}
 			}
 		}
 

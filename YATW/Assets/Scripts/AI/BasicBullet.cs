@@ -18,7 +18,7 @@ namespace BladeWaltz.AI
 		// Start is called before the first frame update
 		private void Start()
 		{
-			m_gameManager = FindObjectOfType<GameManager>();
+			m_gameManager = GameManager.Instance;
 			m_player = m_gameManager.m_player.transform;
 			m_dirToPlayer = (transform.position - m_player.position).normalized;
 		}

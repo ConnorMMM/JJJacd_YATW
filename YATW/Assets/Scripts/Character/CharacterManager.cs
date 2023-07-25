@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 namespace BladeWaltz.Character
@@ -32,8 +33,11 @@ namespace BladeWaltz.Character
 		[SerializeField] private float m_dashStrength = 20f;
 		[SerializeField] private float m_dashRotationIncrease = 200;
 		private bool m_canDash;
-		[SerializeField] private AudioSource dash;
+
+        [Space(2), Header("Audio Settings")]
+        [SerializeField] private AudioSource dash;
 		[SerializeField] private AudioClip[] dashSounds;
+		[SerializeField] private AudioMixer movementSound;
 		
 		private void Awake()
 		{
@@ -51,6 +55,9 @@ namespace BladeWaltz.Character
 			m_arms.transform.eulerAngles += m_reverseRotation ? -rotationChange : rotationChange;
 
 			AddRotationSpeed(-m_rotationDrag * Time.fixedDeltaTime);
+			float pitch = (m_rotationSpeed / 1000) * 2;
+
+			movementSound.SetFloat("Pitch", pitch);
 		}
 
 		public void Move(InputAction.CallbackContext _context)
@@ -96,6 +103,7 @@ namespace BladeWaltz.Character
 			{
 				m_rotationSpeed = 0;
 				//TODO: Add code for death
+				Destroy(gameObject);
 			}
 			else if(m_rotationSpeed > m_maxRotationSpeed)
 				m_rotationSpeed = m_maxRotationSpeed;
@@ -119,6 +127,16 @@ namespace BladeWaltz.Character
 		{
 			m_reverseRotation = !m_reverseRotation;
 			m_arms.transform.eulerAngles = new Vector3(m_arms.transform.eulerAngles.x + 180f, m_arms.transform.eulerAngles.y, m_arms.transform.eulerAngles.z);
+		}
+
+		public float GetDamage()
+		{
+			return m_rotationSpeed * 0.01f * m_damageModifier;
+		}
+
+		public void TakeDamage(float _damage)
+		{
+			AddRotationSpeed(-_damage);
 		}
 	}
 }
