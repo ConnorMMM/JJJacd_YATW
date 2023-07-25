@@ -9,8 +9,8 @@ using UnityEngine.Serialization;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private bool m_isDestructible = true;
-    [SerializeField] private float m_speedLostOnHit = 0.1f;
+    [SerializeField] private float m_force = 300;
+    [SerializeField] private float m_rotationDecrease = -300f;
 
     private void OnCollisionEnter(Collision _collision)
     {
@@ -21,12 +21,9 @@ public class Obstacle : MonoBehaviour
             Debug.Log("Collision");
             CharacterManager controller;
             if(_collision.gameObject.TryGetComponent(out controller))
-                controller.ApplyForce(collisionNormal * m_speedLostOnHit);
+                controller.HitWall(collisionNormal * -m_force, m_rotationDecrease);
             else if(_collision.transform.parent.TryGetComponent(out controller))
-                controller.ApplyForce(collisionNormal * m_speedLostOnHit);
-            
-            if(m_isDestructible)
-                Destroy(gameObject);
+                controller.HitWall(collisionNormal * -m_force, m_rotationDecrease);
         }
     }
 }

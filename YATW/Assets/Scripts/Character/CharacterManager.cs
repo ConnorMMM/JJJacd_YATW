@@ -15,13 +15,9 @@ namespace BladeWaltz.Character
 
 		[SerializeField] private float m_damageModifier = 3f;
 
-		[SerializeField] private float m_maxMoveSpeed = 10f;
-		[SerializeField] private float m_moveSpeedChange = .1f;
-		[SerializeField] private float m_turnSpeed = 30f;
-
-		[SerializeField] private float m_moveSpeed;
+		[SerializeField] private float m_moveSpeed = 70;
 		[SerializeField] private float m_rotationSpeed;
-		[SerializeField] private bool m_reverseRotation = false;
+		[SerializeField] private bool m_reverseRotation;
 		private Vector2 m_moveInput;
 		private bool m_hasInput = false;
 
@@ -34,55 +30,22 @@ namespace BladeWaltz.Character
 		private void Awake()
 		{
 			m_rotationSpeed = m_startingRotationSpeed;
-			m_moveSpeed = m_maxMoveSpeed;
+			m_reverseRotation = false;
 			m_rb = GetComponent<Rigidbody>();
 		}
 
 		private void Update()
 		{
-			/*float inputX = Input.GetAxis("Horizontal");
-			if(inputX - m_moveInput.x > 0)
-			{
-				m_moveInput.x += m_moveSpeedChange;
-				if(m_moveInput.x > inputX)
-					m_moveInput.x = inputX;
-			}
-			else if(inputX - m_moveInput.x < 0)
-			{
-				m_moveInput.x -= m_moveSpeedChange;
-				if(m_moveInput.x < inputX)
-					m_moveInput.x = inputX;
-			}
-			
-			float inputY = Input.GetAxis("Vertical");
-			if(inputY - m_moveInput.y > 0)
-			{
-				m_moveInput.y += m_moveSpeedChange;
-				if(m_moveInput.y > inputY)
-					m_moveInput.y = inputY;
-			}
-			else if(inputY - m_moveInput.y < 0)
-			{
-				m_moveInput.y -= m_moveSpeedChange;
-				if(m_moveInput.y < inputY)
-					m_moveInput.y = inputY;
-			}*/
-			
 			m_moveInput.x = Input.GetAxis("Horizontal");
 			m_moveInput.y = Input.GetAxis("Vertical");
 		}
 
 		private void FixedUpdate()
 		{
-			/*transform.position += transform.forward * (m_moveInput.y * m_moveSpeed * Time.fixedDeltaTime) + 
-			                      transform.right   * (m_moveInput.x * m_moveSpeed * Time.fixedDeltaTime);*/
-			
-			m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_moveSpeed, ForceMode.Impulse);
+			m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_moveSpeed, ForceMode.Force);
 
-			if(!m_reverseRotation)
-				m_spinningTop.transform.eulerAngles += new Vector3(0, m_rotationSpeed * Time.fixedDeltaTime, 0);
-			else
-				m_spinningTop.transform.eulerAngles -= new Vector3(0, m_rotationSpeed * Time.fixedDeltaTime, 0);
+			Vector3 rotationChange = new Vector3(0, m_rotationSpeed * Time.fixedDeltaTime, 0);
+			m_spinningTop.transform.eulerAngles += m_reverseRotation ? -rotationChange : rotationChange;
 			
 			//m_rotationSpeed -= m_rotationSpeedLoss * Time.fixedDeltaTime;
 			if(m_rotationSpeed <= 0)
@@ -93,10 +56,7 @@ namespace BladeWaltz.Character
 
 		public void Move(InputAction.CallbackContext _context)
 		{
-			//Vector2 inputDiff = _context.ReadValue<Vector2>() - m_moveInput;
-			//m_moveInput += inputDiff * .1f;
-			//m_hasInput = true;
-			//Debug.Log(m_moveInput);
+			
 		}
 		
 		public void Dash(InputAction.CallbackContext _context)
@@ -111,7 +71,19 @@ namespace BladeWaltz.Character
 
 		public void ModifyVelocity(float _percentage)
 		{
-			m_rb.velocity *= _percentage;
+			m_rb.velocity -= m_rb.velocity * _percentage;
+		}
+
+		public void AddRotationSpeed(float _increase)
+		{
+			m_rotationSpeed += _increase;
+		}
+
+		public void HitWall(Vector3 _force, float _rotationDecrease)
+		{
+			ApplyForce(_force);
+			AddRotationSpeed(_rotationDecrease);
+			m_reverseRotation = !m_reverseRotation;
 		}
 	}
 }
