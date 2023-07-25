@@ -28,7 +28,6 @@ namespace BladeWaltz.Managers
 		{
 			base.Awake();
 			m_timer = m_startTime * 60;
-			m_player = GameObject.FindGameObjectWithTag("Player");
 		}
 
 		// Update is called once per frame
