@@ -488,7 +488,7 @@ MonoBehaviour:
   m_placementText: {fileID: 3437339255754106794}
   m_nameText: {fileID: 3437339255708590918}
   m_scoreText: {fileID: 3437339256070905559}
-  m_timeText: {fileID: 0}
+  m_timeText: {fileID: 2986448937106883265}
   m_placement: 0
   m_name: 
   m_score: 0
