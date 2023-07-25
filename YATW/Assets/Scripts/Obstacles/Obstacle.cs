@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private float m_force = 300;
+    [SerializeField] private float m_force = 50;
     [SerializeField] private float m_rotationDecrease = -300f;
 
     [SerializeField] private AudioSource hitSound;

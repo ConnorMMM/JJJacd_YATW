@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b61f32f78197f478248279e8cf6e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_force: 200
+  m_force: 50
   m_rotationDecrease: -300
   hitSound: {fileID: 325730846}
   soundList:

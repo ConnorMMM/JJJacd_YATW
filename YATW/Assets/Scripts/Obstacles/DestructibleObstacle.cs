@@ -11,7 +11,6 @@ using Random = UnityEngine.Random;
 
 public class DestructibleObstacle : MonoBehaviour
 {
-    [SerializeField] private float m_velocityLoss = 0.8f;
     [SerializeField] private float m_rotationIncrease = 100f;
 
     [SerializeField] private AudioSource destroySound;
@@ -23,12 +22,10 @@ public class DestructibleObstacle : MonoBehaviour
         {
             destroySound.PlayOneShot(soundList[Random.Range(0, soundList.Length)]);
             CharacterManager characterManager = _other.GetComponent<SpinningTop>().GetCharacterManager();
-            characterManager.ModifyVelocity(m_velocityLoss);
-            characterManager.AddRotationSpeed(m_rotationIncrease);
+            characterManager.HitPickUp(m_rotationIncrease);
             
+            //TODO: Add code to play break sound
             Destroy(gameObject);
-           
-
         }
     }
 }
