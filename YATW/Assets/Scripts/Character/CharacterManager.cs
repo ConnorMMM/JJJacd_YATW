@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 namespace BladeWaltz.Character
@@ -32,8 +33,11 @@ namespace BladeWaltz.Character
 		[SerializeField] private float m_dashStrength = 20f;
 		[SerializeField] private float m_dashRotationIncrease = 200;
 		private bool m_canDash;
-		[SerializeField] private AudioSource dash;
+
+        [Space(2), Header("Audio Settings")]
+        [SerializeField] private AudioSource dash;
 		[SerializeField] private AudioClip[] dashSounds;
+		[SerializeField] private AudioMixer movementSound;
 		
 		private void Awake()
 		{
@@ -51,6 +55,9 @@ namespace BladeWaltz.Character
 			m_arms.transform.eulerAngles += m_reverseRotation ? -rotationChange : rotationChange;
 
 			AddRotationSpeed(-m_rotationDrag * Time.fixedDeltaTime);
+			float pitch = (m_rotationSpeed / 1000) * 2;
+
+			movementSound.SetFloat("Pitch", pitch);
 		}
 
 		public void Move(InputAction.CallbackContext _context)
