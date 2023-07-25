@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using BladeWaltz.Character;
 
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Obstacle : MonoBehaviour
@@ -20,9 +16,9 @@ public class Obstacle : MonoBehaviour
         if(_collision.gameObject.CompareTag("Player"))
         {
             hitSound.PlayOneShot(soundList[Random.Range(0, soundList.Length)]);
+            
             Vector3 collisionNormal = _collision.GetContact(0).normal;
             
-            Debug.Log("Collision");
             CharacterManager controller;
             if(_collision.gameObject.TryGetComponent(out controller))
                 controller.HitWall(collisionNormal * -m_force, m_rotationDecrease);

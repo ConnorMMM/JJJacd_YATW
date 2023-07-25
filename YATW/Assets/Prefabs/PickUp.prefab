@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 398464721804495075}
   - component: {fileID: 4041553949444798384}
   - component: {fileID: 135119941796604316}
-  m_Layer: 0
-  m_Name: Box
+  m_Layer: 9
+  m_Name: PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e610aaf0485271449421cd49585e2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_velocityLoss: 0.1
+  m_rotationIncrease: 100
+  destroySound: {fileID: 0}
+  soundList: []
 --- !u!1 &2638749731839648558
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +73,7 @@ GameObject:
   - component: {fileID: 4127251386842582815}
   - component: {fileID: 4212346825123163053}
   - component: {fileID: 1799158358414296456}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

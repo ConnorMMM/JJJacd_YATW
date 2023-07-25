@@ -4824,6 +4824,7 @@ GameObject:
   - component: {fileID: 7399023759895639739}
   - component: {fileID: 7399023759895639740}
   - component: {fileID: 6651936907943891083}
+  - component: {fileID: 2307327032967896079}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4972,12 +4973,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_arms: {fileID: 3003845618011858493}
   m_damageModifier: 3
-  m_moveSpeed: 80
   m_startingRotationSpeed: 500
   m_maxRotationSpeed: 1500
   m_rotationDrag: 10
   m_rotationSpeed: 0
-  m_moveSpeed: 70
+  m_reverseRotation: 0
+  m_moveSpeed: 80
   m_dashCooldown: 1
   m_dashStrength: 20
   m_dashRotationIncrease: 200
@@ -4997,6 +4998,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!136 &2307327032967896079
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7399023759895639741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5566299256718287362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5015,34 +5030,6 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
       propertyPath: m_LocalScale.z
       value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5109,24 +5096,8 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5378157286654769414, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7052839
-      objectReference: {fileID: 0}
-    - target: {fileID: 5378157286654769414, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.050740995
-      objectReference: {fileID: 0}
-    - target: {fileID: 5378157286654769414, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.050740995
-      objectReference: {fileID: 0}
-    - target: {fileID: 5378157286654769414, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7052839
-      objectReference: {fileID: 0}
-    - target: {fileID: 5378157286654769414, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -8.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5378157286654769414, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5142,7 +5113,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9f6dcba4d2ee8b84ba31bd5a45c5b77b, type: 2}
     - target: {fileID: 7246496318653400127, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7246496318653400127, guid: ca6227a5b2f5df444aca5c1f66002fd1, type: 3}
       propertyPath: m_TagString

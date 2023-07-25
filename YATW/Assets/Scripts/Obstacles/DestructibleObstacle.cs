@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 using BladeWaltz.Character;
 
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DestructibleObstacle : MonoBehaviour
@@ -20,9 +15,14 @@ public class DestructibleObstacle : MonoBehaviour
     {
         if(_other.CompareTag("Player"))
         {
-            destroySound.PlayOneShot(soundList[Random.Range(0, soundList.Length)]);
-            CharacterManager characterManager = _other.GetComponent<SpinningTop>().GetCharacterManager();
-            characterManager.HitPickUp(m_rotationIncrease);
+            //destroySound.PlayOneShot(soundList[Random.Range(0, soundList.Length)]);
+            
+            
+            SpinningTop spinningTop;
+            if(_other.TryGetComponent(out spinningTop))
+                spinningTop.GetCharacterManager().HitPickUp(m_rotationIncrease);
+            else
+                _other.GetComponent<CharacterManager>().HitPickUp(m_rotationIncrease);
             
             //TODO: Add code to play break sound
             Destroy(gameObject);
