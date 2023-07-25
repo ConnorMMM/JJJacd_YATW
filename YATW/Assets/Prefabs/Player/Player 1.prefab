@@ -168,13 +168,14 @@ MonoBehaviour:
   m_rotationSpeed: 0
   m_reverseRotation: 0
   m_moveSpeed: 80
-  m_dashCooldown: 2
+  m_dashCooldown: 2.5
   m_dashStrength: 25
-  m_dashRotationIncrease: 200
+  m_dashRotationIncrease: 75
   dash: {fileID: 7399023758078161511}
   dashSounds:
   - {fileID: 8300000, guid: dc4e5b4b405158e47bf9ce86f569bad2, type: 3}
   - {fileID: 8300000, guid: 52b73bd2a80748b4dab685ecd17847c6, type: 3}
+  movementSound: {fileID: 24100000, guid: 57cfff4340fc86046be2002860bf6a7b, type: 2}
 --- !u!54 &60407210902008660
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -203,7 +204,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 57cfff4340fc86046be2002860bf6a7b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5e7ef5481e5f33243a20e4a98390374b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.154
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -299,7 +300,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.469
   m_Pitch: 1
   Loop: 0
   Mute: 0
