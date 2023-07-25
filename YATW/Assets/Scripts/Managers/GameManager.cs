@@ -38,7 +38,7 @@ namespace BladeWaltz.Managers
 
 		private void SpawnEnemy()
 		{
-        
+			
 		}
     
 		public void AddScore(int _score)
