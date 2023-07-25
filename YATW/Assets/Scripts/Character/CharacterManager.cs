@@ -75,10 +75,9 @@ namespace BladeWaltz.Character
 		{
 			if(m_canDash)
 			{
-				m_rb.AddForce(m_rb.velocity.normalized * m_dashStrength, ForceMode.Impulse);
-				AddRotationSpeed(m_dashRotationIncrease);
+				m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_dashStrength, ForceMode.Impulse);
 				
-				float degree = Mathf.Atan2(m_rb.velocity.normalized.x, m_rb.velocity.normalized.z) * Mathf.Rad2Deg;
+				float degree = Mathf.Atan2(m_moveInput.x, m_moveInput.y) * Mathf.Rad2Deg;
 				m_wind.transform.eulerAngles = new Vector3(0, degree, 0);
 				m_wind.Play();
 				m_wind.transform.eulerAngles = new Vector3(0, degree, 0);
