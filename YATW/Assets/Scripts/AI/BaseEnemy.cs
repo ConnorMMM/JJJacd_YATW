@@ -7,8 +7,6 @@ using UnityEngine.AI;
 
 using BladeWaltz.Managers;
 
-using System;
-
 using Random = UnityEngine.Random;
 
 namespace BladeWaltz.AI
@@ -104,7 +102,7 @@ namespace BladeWaltz.AI
 			// Change enemy colour or something
 		}
 
-		private void OnCollisionEnter(Collision _col)
+		/*private void OnCollisionEnter(Collision _col)
 		{
 			if(_col.gameObject.CompareTag("Player"))
 			{
@@ -114,7 +112,18 @@ namespace BladeWaltz.AI
 				m_gameManager.m_scoreText.text = "" + score;
 				m_deathScore = 0;
 				DeathBehaviour();
-			}
+			}S
+		}*/
+
+		public void TriggerHit()
+		{
+			m_characterManager.HitEnemy(m_playerRotationIncrease);
+			m_characterManager.ModifyVelocity(0.3f);
+			int score = (int.Parse)(m_gameManager.m_scoreText.text);
+			score += m_deathScore;
+			m_gameManager.m_scoreText.text = "" + score;
+			m_deathScore = 0;
+			DeathBehaviour();
 		}
 
 		protected abstract void Behaviour();

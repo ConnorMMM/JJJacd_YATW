@@ -17,8 +17,8 @@ TagManager:
   - Obstacle
   - PickUp
   - Bullet
-  - 
-  - 
+  - Enemy
+  - EnemyTrigger
   - 
   - 
   - 

@@ -3,6 +3,9 @@ using BladeWaltz.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using TMPro;
+
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -18,6 +21,8 @@ namespace BladeWaltz.Character
 		[SerializeField] private GameObject m_face;
 		[SerializeField] private ParticleSystem m_wind;
 		[SerializeField] private Slider m_dashUI;
+		[SerializeField] private Slider m_speedUI;
+		[SerializeField] private TextMeshProUGUI m_speedText;
 		private Rigidbody m_rb;
 		
 		[Space(2), Header("Rotation Settings")]
@@ -68,6 +73,9 @@ namespace BladeWaltz.Character
 				if(m_dashUI != null)
 					m_dashUI.value = m_dashTimer;
 			}
+
+			m_speedUI.value = (m_rotationSpeed * 0.1f) / 150f;
+			m_speedText.text = ((int)(m_rotationSpeed * 0.1f) + 1).ToString();
 			
 			m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_moveSpeed, ForceMode.Force);
 
@@ -132,6 +140,11 @@ namespace BladeWaltz.Character
 			}
 			else if(m_rotationSpeed > m_maxRotationSpeed)
 				m_rotationSpeed = m_maxRotationSpeed;
+		}
+
+		public void ModifyVelocity(float _percentage)
+		{
+			m_rb.velocity -= m_rb.velocity * _percentage;
 		}
 
 		public void HitEnemy(float _changeInRotation)

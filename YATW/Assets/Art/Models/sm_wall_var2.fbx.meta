@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 75d7f7abdd2a2744fb97c103033b7e46
+guid: 7058832111bb4ff46b760c93be44b447
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: wall_div_var1
-    second: {fileID: 2100000, guid: 2eb86d0d6244fd94ca5df3c5952573a7, type: 2}
+      name: cobble_wall
+    second: {fileID: 2100000, guid: 67c308cf57d3175419d6b4f3b9c5a5a4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
