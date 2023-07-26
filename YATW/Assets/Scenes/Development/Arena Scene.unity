@@ -10373,7 +10373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1b2f95d04185e140bf22ab2deab0da2, type: 2}
   m_sharedMaterial: {fileID: 1014528157093921725, guid: b1b2f95d04185e140bf22ab2deab0da2, type: 2}
@@ -11307,6 +11307,10 @@ PrefabInstance:
       propertyPath: m_player
       value: 
       objectReference: {fileID: 1271643966}
+    - target: {fileID: 1542044437730522110, guid: 03ce1149897909a4bbf5c8596aaf6faf, type: 3}
+      propertyPath: m_scoreText
+      value: 
+      objectReference: {fileID: 1397214676}
     - target: {fileID: 1542044437730522110, guid: 03ce1149897909a4bbf5c8596aaf6faf, type: 3}
       propertyPath: m_spawnRadius
       value: 40
