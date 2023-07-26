@@ -33,22 +33,9 @@ namespace BladeWaltz.UI
 					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 			}
-			else if(m_entries.Count == 0)
-			{
-				for(int i = 0; i <= 4; i++)
-				{
-					GameObject currentPrefab = Instantiate(m_scorePrefab, m_canvas);
-					m_listOfHighScores.Add(currentPrefab);
-					HighScore currentHighScore = currentPrefab.GetComponent<HighScore>();
-					currentHighScore.m_placement = i + 1;
-					currentHighScore.m_name = "SUS";
-					currentHighScore.m_score = 000;
-					currentHighScore.m_time = "00:00";
-				}
-			}
 			else
 			{
-				for(int i = 0; i <= m_entries.Count; i++)
+				for(int i = 0; i < m_entries.Count; i++)
 				{
 					GameObject currentPrefab = Instantiate(m_scorePrefab, m_canvas);
 					m_listOfHighScores.Add(currentPrefab);
@@ -63,7 +50,7 @@ namespace BladeWaltz.UI
 					GameObject currentPrefab = Instantiate(m_scorePrefab, m_canvas);
 					m_listOfHighScores.Add(currentPrefab);
 					HighScore currentHighScore = currentPrefab.GetComponent<HighScore>();
-					currentHighScore.m_placement = i;
+					currentHighScore.m_placement = i + 1;
 					currentHighScore.m_name = "SUS";
 					currentHighScore.m_score = 000;
 					currentHighScore.m_time = "00:00";

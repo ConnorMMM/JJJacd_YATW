@@ -14870,7 +14870,7 @@ MonoBehaviour:
   m_letterTwo: {fileID: 1604329080}
   m_letterThree: {fileID: 1769626888}
   m_score: {fileID: 347652384}
-  m_time: {fileID: 0}
+  m_time: {fileID: 347652384}
   m_fileName: HighScores.json
   m_entries: []
 --- !u!1 &1682801074
