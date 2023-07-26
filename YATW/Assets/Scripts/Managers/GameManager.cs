@@ -44,8 +44,11 @@ namespace BladeWaltz.Managers
 
 		public GameObject m_player;
 
+		[SerializeField] private GameObject m_finalPrompt;
+
 		protected override void Awake()
 		{
+			Time.timeScale = 1.0f;
 			m_timer = m_startTime * 60;
 			StartCoroutine(SpawningEnemies());
 			StartCoroutine(SpawnRateIncrease());
@@ -126,7 +129,8 @@ namespace BladeWaltz.Managers
 
 		public void PlayerDeath()
 		{
-			
+			Time.timeScale = 0.0f;
+			m_finalPrompt.SetActive(true);
 		}
 	}
 }

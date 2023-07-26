@@ -227,7 +227,7 @@ MonoBehaviour:
   m_damage: 0
   m_projectileSpeed: 5
   m_numOfBullets: 12
-  m_radius: 5
+  m_radius: 0.2
 --- !u!95 &5075813652536515057
 Animator:
   serializedVersion: 4
