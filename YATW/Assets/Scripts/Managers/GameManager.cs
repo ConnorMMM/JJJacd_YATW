@@ -55,6 +55,7 @@ namespace BladeWaltz.Managers
 			m_timer = (int)m_startTime * 60;
 			StartCoroutine(SpawningEnemies());
 			StartCoroutine(SpawnRateIncrease());
+			// Hi
 			m_timeValue = 90;
 		}
 
