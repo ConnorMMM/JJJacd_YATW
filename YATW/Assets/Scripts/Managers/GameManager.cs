@@ -6,6 +6,8 @@ using BladeWaltz.DesignPatterns;
 
 using System;
 
+using Random = UnityEngine.Random;
+
 namespace BladeWaltz.Managers
 {
 	public class GameManager : Singleton<GameManager>
@@ -18,9 +20,22 @@ namespace BladeWaltz.Managers
 
 		[Header("AI Settings")]
 		[SerializeField] private GameObject m_basicRanged;
+		[SerializeField, Range(0, 1)] private float m_rangedSpawnChance;
 		[SerializeField] private GameObject m_basicMelee;
-		[SerializeField] private GameObject m_spawnPoint; // We add more later
+		[SerializeField, Range(0, 1)] private float m_meleeSpawnChance;
 
+		[Header("Spawn Settings")] 
+		[SerializeField, Tooltip("If left blank, will use (0,0)")]
+		private Transform m_spawnPoint;
+		[SerializeField, Tooltip("Radius of a circle around the spawn point that enemies with appear")]
+		private float m_spawnRadius = 45f;
+		[SerializeField, Tooltip("How many enemies spawn every second")]
+		private float m_spawnRate = 2;
+		[SerializeField, Tooltip("How mach spawn rate increases every second")]
+		private float m_spawnRateIncrease = 0.2f;
+		
+		
+		
 		[Header("Player Info")] 
 		public int m_score;
 
@@ -29,6 +44,8 @@ namespace BladeWaltz.Managers
 		protected override void Awake()
 		{
 			m_timer = m_startTime * 60;
+			StartCoroutine(SpawningEnemies());
+			StartCoroutine(SpawnRateIncrease());
 		}
 
 		// Update is called once per frame
@@ -37,9 +54,54 @@ namespace BladeWaltz.Managers
 			m_timer -= Time.deltaTime;
 		}
 
+		private IEnumerator SpawningEnemies()
+		{
+			while(true)
+			{
+				yield return new WaitForSeconds(1 / m_spawnRate);
+				SpawnEnemy();
+			}
+		}
+		
+		private IEnumerator SpawnRateIncrease()
+		{
+			while(true)
+			{
+				yield return new WaitForSeconds(1);
+				m_spawnRate += m_spawnRateIncrease;
+			}
+		}
+
 		private void SpawnEnemy()
 		{
-			
+			float rangedChance = m_rangedSpawnChance / (m_rangedSpawnChance + m_meleeSpawnChance);
+			float meleeChance = m_meleeSpawnChance / (m_rangedSpawnChance + m_meleeSpawnChance);
+
+			float rndNum = Random.value;
+			if(rndNum <= rangedChance)
+			{
+				Instantiate(m_basicRanged, GetRandomSpawnPoint(), Quaternion.identity);
+			}
+			else if(rndNum <= rangedChance + meleeChance)
+			{
+				Instantiate(m_basicMelee, GetRandomSpawnPoint(), Quaternion.identity);
+			}
+		}
+
+		private Vector3 GetRandomSpawnPoint()
+		{
+			float degree = Random.value * 360;
+
+			float x = m_spawnRadius * Mathf.Sin(degree);
+			float z = m_spawnRadius * Mathf.Cos(degree);
+
+			if(m_spawnPoint != null)
+			{
+				x += m_spawnPoint.position.x;
+				z += m_spawnPoint.position.z;
+			}
+				
+			return new Vector3(x, 0.5f, z);
 		}
     
 		public void AddScore(int _score)
