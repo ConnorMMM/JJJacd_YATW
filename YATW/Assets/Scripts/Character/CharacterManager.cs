@@ -120,6 +120,11 @@ namespace BladeWaltz.Character
 				m_rotationSpeed = m_maxRotationSpeed;
 		}
 
+		public void HitEnemy(float _changeInRotation)
+		{
+			AddRotationSpeed(_changeInRotation);
+		}
+
 		public void HitWall(Vector3 _force, float _rotationDecrease)
 		{
 			ApplyForce(_force);
