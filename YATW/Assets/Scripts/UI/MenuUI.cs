@@ -30,4 +30,14 @@ public class MenuUI : MonoBehaviour
     {
         prompt.SetActive(false);
     }
+
+    public void OnPause()
+    {
+        Time.timeScale = 0.0f;
+    }
+
+    public void OnContinue()
+    {
+        Time.timeScale = 1.0f;
+    }
 }
