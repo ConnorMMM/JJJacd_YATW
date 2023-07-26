@@ -6,6 +6,8 @@ using BladeWaltz.DesignPatterns;
 
 using System;
 
+using TMPro;
+
 using Random = UnityEngine.Random;
 
 namespace BladeWaltz.Managers
@@ -35,10 +37,9 @@ namespace BladeWaltz.Managers
 		private float m_spawnRate = 2;
 		[SerializeField, Tooltip("How mach spawn rate increases every second")]
 		private float m_spawnRateIncrease = 0.2f;
-		
-		
-		
-		[Header("Player Info")] 
+
+		[Header("Player Info")]
+		[SerializeField] public TMP_Text m_scoreText;
 		public int m_score;
 
 		public GameObject m_player;

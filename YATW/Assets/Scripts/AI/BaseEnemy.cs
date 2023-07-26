@@ -22,6 +22,7 @@ namespace BladeWaltz.AI
 		[SerializeField] public float m_moveSpeed;
 		[Tooltip("Keep low, does not change much.")]
 		[SerializeField] public float m_turnSpeed;
+		[SerializeField] public int m_deathScore;
 
 		[SerializeField] protected float m_playerRotationIncrease = 50;
 
@@ -109,6 +110,9 @@ namespace BladeWaltz.AI
 			{
 				m_characterManager.HitEnemy(m_playerRotationIncrease);
 				DeathBehaviour();
+				int score = (int.Parse)(m_gameManager.m_scoreText.text);
+				score += m_deathScore;
+				m_gameManager.m_scoreText.text = "" + score;
 				Destroy(gameObject);
 			}
 		}

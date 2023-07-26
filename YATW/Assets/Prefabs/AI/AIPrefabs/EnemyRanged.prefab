@@ -137,6 +137,8 @@ MonoBehaviour:
   m_health: 1
   m_moveSpeed: 5
   m_turnSpeed: 2
+  m_deathScore: 100
+  m_playerRotationIncrease: 50
   m_projectilePrefab: {fileID: 2427946339612528741, guid: 725479a5cca378a42a18d0db2daf46c0, type: 3}
   m_damage: 0
   m_projectileSpeed: 5

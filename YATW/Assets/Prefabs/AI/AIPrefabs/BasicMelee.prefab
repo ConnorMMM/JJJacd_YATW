@@ -137,11 +137,11 @@ MonoBehaviour:
   m_health: 1
   m_moveSpeed: 7
   m_turnSpeed: 2
+  m_deathScore: 100
+  m_playerRotationIncrease: 50
   m_projectilePrefab: {fileID: 0}
   m_damage: 0
   m_projectileSpeed: 0
-  m_left: 0
-  m_right: 0
 --- !u!95 &1019396868665993775
 Animator:
   serializedVersion: 4
