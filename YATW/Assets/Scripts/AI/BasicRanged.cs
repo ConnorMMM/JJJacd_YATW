@@ -49,7 +49,7 @@ namespace BladeWaltz.AI
 
 		protected override void DeathBehaviour()
 		{
-			throw new System.NotImplementedException();
+			Debug.Log("OwO");
 		}
 	}
 }
