@@ -20,19 +20,6 @@ namespace BladeWaltz.UI
 		{
 			m_entries = JsonHandler.ReadFromJson<InputEntry>(m_fileName);
 
-			for(int i = 0; i < m_entries.Count; i++)
-			{
-				for(int j = 1; j < m_entries.Count; j++)
-				{
-					if(int.Parse(m_entries[j].m_playerScore) > int.Parse(m_entries[j - 1].m_playerScore))
-					{
-						InputEntry tmp = m_entries[j];
-						m_entries[j] = m_entries[j - 1];
-						m_entries[j - 1] = tmp;
-					}
-				}
-			}
-			
 			if(m_entries.Count >= 5)
 			{
 				for(int i = 0; i <= 4; i++)
@@ -43,6 +30,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i + 1;
 					currentHighScore.m_name = m_entries[i].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 			}
 			else
@@ -55,6 +43,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i + 1;
 					currentHighScore.m_name = m_entries[i].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 				for(int i = m_entries.Count; i <= 4; i++)
 				{
@@ -64,6 +53,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i + 1;
 					currentHighScore.m_name = "N/A";
 					currentHighScore.m_score = 000;
+					currentHighScore.m_time = "00:00";
 				}
 			}
 		}
@@ -100,6 +90,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i + 1;
 					currentHighScore.m_name = m_entries[i].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 			}
 			else
@@ -111,6 +102,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i;
 					currentHighScore.m_name = m_entries[i - 1].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i - 1].m_playerScore);
+					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
 				for(int i = m_entries.Count + 1; i <= 4; i++)
 				{
@@ -118,6 +110,7 @@ namespace BladeWaltz.UI
 					currentHighScore.m_placement = i;
 					currentHighScore.m_name = "N/A";
 					currentHighScore.m_score = 000;
+					currentHighScore.m_time = "00:00";
 				}
 			}
 		}
