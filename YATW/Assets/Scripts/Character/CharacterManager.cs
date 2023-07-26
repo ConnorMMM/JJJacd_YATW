@@ -136,6 +136,8 @@ namespace BladeWaltz.Character
 			{
 				m_rotationSpeed = 0;
 				m_rotationSource.Stop();
+				m_speedUI.value = 0;
+				m_speedText.text = "0";
 				GameManager.Instance.PlayerDeath();
 			}
 			else if(m_rotationSpeed > m_maxRotationSpeed)
