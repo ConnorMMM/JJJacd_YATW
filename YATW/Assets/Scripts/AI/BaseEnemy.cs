@@ -62,7 +62,10 @@ namespace BladeWaltz.AI
 			transform.position += transform.right * Time.fixedDeltaTime;
 
 			// Custom behaviours for sub classes
-			Behaviour();
+			if(m_player != null)
+			{
+				Behaviour();
+			}
 		}
 
 		protected void FleeTarget()

@@ -471,9 +471,11 @@ MonoBehaviour:
   m_rangedSpawnChance: 0.75
   m_basicMelee: {fileID: 6588292177879111393, guid: 64af17809c359e842b9a90e973cf24e7, type: 3}
   m_meleeSpawnChance: 0.25
+  m_basicBomber: {fileID: 0}
+  m_bomberSpawnChance: 0
   m_spawnPoint: {fileID: 1484207976}
   m_spawnRadius: 45
-  m_spawnRate: 0.75
+  m_spawnRate: 10
   m_spawnRateIncrease: 0.01
   m_score: 0
   m_player: {fileID: 381168395}

@@ -41,7 +41,7 @@ namespace BladeWaltz.UI
 					m_listOfHighScores.Add(currentPrefab);
 					HighScore currentHighScore = currentPrefab.GetComponent<HighScore>();
 					currentHighScore.m_placement = i + 1;
-					currentHighScore.name = m_entries[i].m_playerName;
+					currentHighScore.m_name = m_entries[i].m_playerName;
 					currentHighScore.m_score = int.Parse(m_entries[i].m_playerScore);
 					currentHighScore.m_time = m_entries[i].m_playerTime;
 				}
