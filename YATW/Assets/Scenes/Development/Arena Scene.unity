@@ -5589,27 +5589,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &767911218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2950209605933742424, guid: 5760608ae794ab643b8abef49a4347da, type: 3}
-  m_PrefabInstance: {fileID: 1042194364}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &767911225
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767911218}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &771237832
 GameObject:
   m_ObjectHideFlags: 0
@@ -7927,10 +7906,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 690892912}
     m_Modifications:
-    - target: {fileID: 2950209605933742424, guid: 5760608ae794ab643b8abef49a4347da, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3994313781240843805, guid: 5760608ae794ab643b8abef49a4347da, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -7978,10 +7953,6 @@ PrefabInstance:
     - target: {fileID: 4334001695009707175, guid: 5760608ae794ab643b8abef49a4347da, type: 3}
       propertyPath: m_Name
       value: sm_flat_rock2_low (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4334001695009707175, guid: 5760608ae794ab643b8abef49a4347da, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5760608ae794ab643b8abef49a4347da, type: 3}
@@ -13890,27 +13861,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2098352128 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2405895531888762175, guid: 32d8d413155728444947608097dc2f9d, type: 3}
-  m_PrefabInstance: {fileID: 2604805913491705899}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &2098352135
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098352128}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.605, y: 0.827, z: 0.665}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.007, y: 0.827, z: -0.037}
-  m_TimeToStationary: 0.5
 --- !u!1 &2103025353
 GameObject:
   m_ObjectHideFlags: 0
@@ -14367,14 +14317,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 690892912}
     m_Modifications:
-    - target: {fileID: 2405895531888762175, guid: 32d8d413155728444947608097dc2f9d, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388269979021310472, guid: 32d8d413155728444947608097dc2f9d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7445392110109562089, guid: 32d8d413155728444947608097dc2f9d, type: 3}
       propertyPath: m_Name
       value: sm_flat_rock1_low

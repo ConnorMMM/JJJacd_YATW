@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 9018151087178560260}
   - component: {fileID: 6240502367060636277}
   - component: {fileID: 2213066411597845970}
+  - component: {fileID: 6774602003187034852}
+  - component: {fileID: 2792991799937899900}
   m_Layer: 0
   m_Name: sm_rock_var1_low
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9205044188595695849}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.408516, y: 0.0020286248, z: -0.9152975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -213,3 +215,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.94428515, y: 0.60773957, z: 0.9844756}
   m_Center: {x: -0.012540534, y: 0.30183923, z: 0.022877946}
+--- !u!54 &6774602003187034852
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205044188595695849}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!208 &2792991799937899900
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205044188595695849}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.4721426, y: 0.3038698, z: 0.4922378}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.01254053, y: 0.3018392, z: 0.02287795}
+  m_TimeToStationary: 0.5
