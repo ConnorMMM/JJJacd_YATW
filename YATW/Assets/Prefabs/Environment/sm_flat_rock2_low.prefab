@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b61f32f78197f478248279e8cf6e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_force: 50
-  m_rotationDecrease: -300
+  m_force: 40
+  m_rotationDecrease: -100
   hitSound: {fileID: 172384240421954178}
   soundList:
   - {fileID: 8300000, guid: e58c50f619d780e4d8bb95f8eb7dec2e, type: 3}
@@ -236,7 +236,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4334001695009707175}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.700438, y: 0.00037568278, z: -16.688776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

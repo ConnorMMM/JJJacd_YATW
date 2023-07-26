@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b61f32f78197f478248279e8cf6e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_force: 50
-  m_rotationDecrease: -300
+  m_force: 25
+  m_rotationDecrease: -150
   hitSound: {fileID: 194129483009691580}
   soundList:
   - {fileID: 8300000, guid: e58c50f619d780e4d8bb95f8eb7dec2e, type: 3}
