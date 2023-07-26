@@ -51,7 +51,7 @@ namespace BladeWaltz.UI
 					m_listOfHighScores.Add(currentPrefab);
 					HighScore currentHighScore = currentPrefab.GetComponent<HighScore>();
 					currentHighScore.m_placement = i + 1;
-					currentHighScore.m_name = "SUS";
+					currentHighScore.m_name = "N/A";
 					currentHighScore.m_score = 000;
 					currentHighScore.m_time = "00:00";
 				}
@@ -108,7 +108,7 @@ namespace BladeWaltz.UI
 				{
 					HighScore currentHighScore = m_listOfHighScores[i - 1].GetComponent<HighScore>();
 					currentHighScore.m_placement = i;
-					currentHighScore.m_name = "SUS";
+					currentHighScore.m_name = "N/A";
 					currentHighScore.m_score = 000;
 					currentHighScore.m_time = "00:00";
 				}
