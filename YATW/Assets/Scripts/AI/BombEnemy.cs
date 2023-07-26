@@ -25,14 +25,14 @@ namespace BladeWaltz.AI
 			for(int i = 1; i <= m_numOfBullets; i++)
 			{
 				double x = transform.position.x + m_radius * Math.Cos(2 * Math.PI * i / m_numOfBullets);
-				double y = transform.position.y + m_radius * Math.Sin(2 * Math.PI * i / m_numOfBullets);
+				double z = transform.position.z + m_radius * Math.Sin(2 * Math.PI * i / m_numOfBullets);
 				
 				
 				GameObject bullet = Instantiate(m_projectilePrefab, 
 				                                new Vector3(
 				                                            (float)x,
 				                                            0.5f,
-				                                            (float)y), 
+				                                            (float)z), 
 				                                Quaternion.identity, 
 				                                this.transform);
 
