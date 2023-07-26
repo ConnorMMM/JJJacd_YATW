@@ -37,9 +37,9 @@ namespace BladeWaltz.Character
 		private bool m_canDash;
 
         [Space(2), Header("Audio Settings")]
-        [SerializeField] private AudioSource dash;
-		[SerializeField] private AudioClip[] dashSounds;
-		[SerializeField] private AudioMixer movementSound;
+        [SerializeField] private AudioSource m_dash;
+		[SerializeField] private AudioClip[] m_dashSounds;
+		[SerializeField] private AudioMixer m_playerMixer;
 		
 		private void Awake()
 		{
@@ -62,8 +62,8 @@ namespace BladeWaltz.Character
 			float degree = Mathf.Atan2(m_rb.velocity.normalized.x, m_rb.velocity.normalized.z) * Mathf.Rad2Deg;
 			m_face.transform.eulerAngles = new Vector3(0, degree, 0);
 			
-			float pitch = (m_rotationSpeed / 1000) * 2;
-			movementSound.SetFloat("Pitch", pitch);
+			float pitch = (m_rotationSpeed / 1000) * 2.1f;
+			m_playerMixer.SetFloat("RotationPitch", pitch);
 		}
 
 		public void Move(InputAction.CallbackContext _context)
@@ -73,7 +73,7 @@ namespace BladeWaltz.Character
 		
 		public void Dash(InputAction.CallbackContext _context)
 		{
-			if(m_canDash)
+			if(m_canDash && (m_moveInput.x != 0 || m_moveInput.y != 0))
 			{
 				m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_dashStrength, ForceMode.Impulse);
 				
@@ -82,7 +82,7 @@ namespace BladeWaltz.Character
 				m_wind.Play();
 				m_wind.transform.eulerAngles = new Vector3(0, degree, 0);
 				
-				dash.PlayOneShot(dashSounds[0]);
+				m_dash.PlayOneShot(m_dashSounds[0]);
 				StartCoroutine(DashCooldown());
 			}
 		}
@@ -92,7 +92,7 @@ namespace BladeWaltz.Character
 			m_canDash = false;
 			yield return new WaitForSeconds(m_dashCooldown);
 			m_canDash = true;
-			dash.PlayOneShot(dashSounds[1]);
+			m_dash.PlayOneShot(m_dashSounds[1]);
 		}
 		
 

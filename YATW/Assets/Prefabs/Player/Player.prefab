@@ -5439,11 +5439,11 @@ MonoBehaviour:
   m_dashCooldown: 2.5
   m_dashStrength: 25
   m_dashRotationIncrease: 75
-  dash: {fileID: 7920766450691654745}
-  dashSounds:
+  m_dash: {fileID: 8511624358626506950}
+  m_dashSounds:
   - {fileID: 8300000, guid: dc4e5b4b405158e47bf9ce86f569bad2, type: 3}
   - {fileID: 8300000, guid: 52b73bd2a80748b4dab685ecd17847c6, type: 3}
-  movementSound: {fileID: 24100000, guid: 57cfff4340fc86046be2002860bf6a7b, type: 2}
+  m_playerMixer: {fileID: 24100000, guid: 57cfff4340fc86046be2002860bf6a7b, type: 2}
 --- !u!82 &7920766450691654745
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5453,7 +5453,7 @@ AudioSource:
   m_GameObject: {fileID: 7399023759895639741}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 57cfff4340fc86046be2002860bf6a7b, type: 2}
+  OutputAudioMixerGroup: {fileID: -7627972236087391386, guid: 57cfff4340fc86046be2002860bf6a7b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5e7ef5481e5f33243a20e4a98390374b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.154
@@ -5549,9 +5549,9 @@ AudioSource:
   m_GameObject: {fileID: 7399023759895639741}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 57cfff4340fc86046be2002860bf6a7b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: dc4e5b4b405158e47bf9ce86f569bad2, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.469
   m_Pitch: 1
   Loop: 0
