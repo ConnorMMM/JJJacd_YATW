@@ -329,11 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5075813652536515067, guid: a2e5d5e8bc984624e8fbdf6c7ea993d5, type: 3}
       propertyPath: m_radius
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5075813652536515067, guid: a2e5d5e8bc984624e8fbdf6c7ea993d5, type: 3}
       propertyPath: m_numOfBullets
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e5d5e8bc984624e8fbdf6c7ea993d5, type: 3}

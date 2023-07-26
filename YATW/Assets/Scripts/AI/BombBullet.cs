@@ -6,13 +6,13 @@ namespace BladeWaltz.AI
 {
 	public class BombBullet : BaseBullet
 	{
-		public Transform m_parent;
+		public Vector3 m_parent;
 		private Vector3 m_dirToParent;
 
 		private void Start()
 		{
-			m_dirToParent = (transform.position - m_parent.position).normalized;
-			m_dirToParent = new Vector3(m_dirToParent.x, 0, m_dirToParent.z);
+			m_dirToParent = (transform.position - m_parent).normalized;
+			m_dirToParent = new Vector3(m_dirToParent.x, 0, m_dirToParent.y);
 		}
 
 		protected override void Behaviour()

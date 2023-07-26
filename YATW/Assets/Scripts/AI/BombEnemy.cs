@@ -24,22 +24,20 @@ namespace BladeWaltz.AI
 
 			for(int i = 1; i <= m_numOfBullets; i++)
 			{
-				double theta = (Math.PI * 2 / m_numOfBullets);
-				double degree = theta * i;
-				//float degree = (float)(theta * 180 / Math.PI);
-
-				double x = m_radius * Math.Cos(degree) + transform.position.x;
-				double y = m_radius * Math.Sin(degree) + transform.position.y;
+				double x = transform.position.x + m_radius * Math.Cos(2 * Math.PI * i / m_numOfBullets);
+				double y = transform.position.y + m_radius * Math.Sin(2 * Math.PI * i / m_numOfBullets);
+				
 				
 				GameObject bullet = Instantiate(m_projectilePrefab, 
 				                                new Vector3(
 				                                            (float)x,
 				                                            0.5f,
 				                                            (float)y), 
-				                                Quaternion.identity);
+				                                Quaternion.identity, 
+				                                this.transform);
 
 				bullet.transform.parent = null;
-				bullet.GetComponent<BombBullet>().m_parent = transform;
+				bullet.GetComponent<BombBullet>().m_parent = transform.position;
 				bullet.GetComponent<BombBullet>().m_damage = m_damage;
 			}
 		}
