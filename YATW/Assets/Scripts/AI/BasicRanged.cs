@@ -50,6 +50,7 @@ namespace BladeWaltz.AI
 		protected override void DeathBehaviour()
 		{
 			Debug.Log("OwO");
+			Destroy(gameObject);
 		}
 	}
 }

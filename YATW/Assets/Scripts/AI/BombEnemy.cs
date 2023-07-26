@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace BladeWaltz.AI
 {
@@ -17,12 +19,17 @@ namespace BladeWaltz.AI
 
 		protected override void DeathBehaviour()
 		{
-			Explode();
+			Destroy(gameObject.GetComponent<MeshRenderer>());
+			m_agent.acceleration = 0;
+			m_agent.velocity = new Vector3();
+			m_agent.speed = 0;
+			m_agent.angularSpeed = 0;
+
+			StartCoroutine(ExplodeAfter(2));
 		}
 
 		private void Explode()
 		{
-
 			for(int i = 1; i <= m_numOfBullets; i++)
 			{
 				double x = transform.position.x + m_radius * Math.Cos(2 * Math.PI * i / m_numOfBullets);
@@ -36,11 +43,18 @@ namespace BladeWaltz.AI
 				                                            (float)z), 
 				                                Quaternion.identity, 
 				                                this.transform);
-
+				
 				bullet.transform.parent = null;
 				bullet.GetComponent<BombBullet>().m_parent = transform.position;
 				bullet.GetComponent<BombBullet>().m_damage = m_damage;
 			}
+		}
+
+		IEnumerator ExplodeAfter(int _seconds)
+		{
+			yield return new WaitForSeconds(_seconds);
+			Explode();
+			Destroy(gameObject);
 		}
 	}
 }

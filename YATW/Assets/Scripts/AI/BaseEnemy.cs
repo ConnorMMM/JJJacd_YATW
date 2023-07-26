@@ -109,11 +109,11 @@ namespace BladeWaltz.AI
 			if(_col.gameObject.CompareTag("Player"))
 			{
 				m_characterManager.HitEnemy(m_playerRotationIncrease);
-				DeathBehaviour();
 				int score = (int.Parse)(m_gameManager.m_scoreText.text);
 				score += m_deathScore;
 				m_gameManager.m_scoreText.text = "" + score;
-				Destroy(gameObject);
+				m_deathScore = 0;
+				DeathBehaviour();
 			}
 		}
 

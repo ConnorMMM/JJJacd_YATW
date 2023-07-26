@@ -14,6 +14,7 @@ namespace BladeWaltz.AI
 		protected override void DeathBehaviour()
 		{
 			Debug.Log("UwU");
+			Destroy(gameObject);
 		}
 	}
 }
