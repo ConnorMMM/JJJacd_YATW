@@ -256,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7789125097073397331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sm_flat_rock1_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
