@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing/MenuTest.unity
+    path: Assets/Scenes/Development/MenuTest.unity
     guid: cfb348f30189bb74daf3d8f7c2540787
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Testing/AJ Testing.unity
     guid: 0ef8bc964a45cc5488ae5599862040b3
+  - enabled: 1
+    path: Assets/Scenes/Development/Arena Scene.unity
+    guid: 9bac5a0a0d88394468bfbff83b20e2cc
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5fc37caaa4306434b9791828fc2c5b6e, type: 2}
