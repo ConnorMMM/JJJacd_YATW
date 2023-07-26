@@ -123,5 +123,10 @@ namespace BladeWaltz.Managers
 		{
 			m_timer += _time;
 		}
+
+		public void PlayerDeath()
+		{
+			
+		}
 	}
 }

@@ -1,3 +1,5 @@
+using BladeWaltz.Managers;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,24 +18,21 @@ namespace BladeWaltz.Character
 		[SerializeField] private ParticleSystem m_wind;
 		private Rigidbody m_rb;
 		
-		[Space(10), Header("Settings")]
-		[SerializeField] private float m_damageModifier = 3f;
-
 		[Space(2), Header("Rotation Settings")]
 		[SerializeField] private float m_startingRotationSpeed = 500f;
 		[SerializeField] private float m_maxRotationSpeed = 1500f;
-		[SerializeField] private float m_rotationDrag = 10f;
+		[SerializeField, Tooltip("Decrease over time of rotation")] private float m_rotationDrag = 10f;
 		[SerializeField, Tooltip("Arm's rotation speed. (DON'T TOUCH)")] private float m_rotationSpeed;
-		[SerializeField] private bool m_reverseRotation;
+		private bool m_reverseRotation;
 		
 		[Space(2), Header("Move Settings")]
 		[SerializeField] private float m_moveSpeed = 70;
 		private Vector2 m_moveInput;
 
 		[Space(2), Header("Dash Settings")]
-		[SerializeField] private float m_dashCooldown = 1f;
-		[SerializeField] private float m_dashStrength = 20f;
-		[SerializeField] private float m_dashRotationIncrease = 200;
+		[SerializeField] private float m_dashCooldown = 2.5f;
+		[SerializeField] private float m_dashStrength = 25f;
+		private float m_dashTimer;
 		private bool m_canDash;
 
         [Space(2), Header("Audio Settings")]
@@ -45,6 +44,7 @@ namespace BladeWaltz.Character
 		{
 			m_rotationSpeed = m_startingRotationSpeed;
 			m_reverseRotation = false;
+			m_dashTimer = 1;
 			m_canDash = true;
 			m_wind.Stop();
 			m_rb = GetComponent<Rigidbody>();
@@ -52,12 +52,23 @@ namespace BladeWaltz.Character
 
 		private void FixedUpdate()
 		{
+			if(!m_canDash)
+			{
+				m_dashTimer += Time.fixedDeltaTime / m_dashCooldown;
+				if(m_dashTimer >= 1)
+				{
+					m_dashTimer = 1;
+					m_canDash = true;
+					m_dash.PlayOneShot(m_dashSounds[1]);
+				}
+			}
+			
 			m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_moveSpeed, ForceMode.Force);
 
 			Vector3 rotationChange = new(0, m_rotationSpeed * Time.fixedDeltaTime, 0);
 			m_arms.transform.eulerAngles += m_reverseRotation ? -rotationChange : rotationChange;
 
-			AddRotationSpeed(-m_rotationDrag * Time.fixedDeltaTime);
+			ModifyRotation(-m_rotationDrag * Time.fixedDeltaTime);
 
 			float degree = Mathf.Atan2(m_rb.velocity.normalized.x, m_rb.velocity.normalized.z) * Mathf.Rad2Deg;
 			m_face.transform.eulerAngles = new Vector3(0, degree, 0);
@@ -83,7 +94,9 @@ namespace BladeWaltz.Character
 				m_wind.transform.eulerAngles = new Vector3(0, degree, 0);
 				
 				m_dash.PlayOneShot(m_dashSounds[0]);
-				StartCoroutine(DashCooldown());
+				m_dashTimer = 0;
+				m_canDash = false;
+				//StartCoroutine(DashCooldown());
 			}
 		}
 
@@ -101,20 +114,15 @@ namespace BladeWaltz.Character
 			m_rb.AddForce(_force, ForceMode.Impulse);
 		}
 
-		private void ModifyVelocity(float _percentage)
+		private void ModifyRotation(float _change)
 		{
-			m_rb.velocity -= m_rb.velocity * _percentage;
-		}
-
-		private void AddRotationSpeed(float _increase)
-		{
-			m_rotationSpeed += _increase;
+			m_rotationSpeed += _change;
 			
 			if(m_rotationSpeed <= 0)
 			{
 				m_rotationSpeed = 0;
 				//TODO: Add code for death
-				Destroy(gameObject);
+				GameManager.Instance.PlayerDeath();
 			}
 			else if(m_rotationSpeed > m_maxRotationSpeed)
 				m_rotationSpeed = m_maxRotationSpeed;
@@ -122,21 +130,20 @@ namespace BladeWaltz.Character
 
 		public void HitEnemy(float _changeInRotation)
 		{
-			AddRotationSpeed(_changeInRotation);
+			ModifyRotation(_changeInRotation);
 		}
 
-		public void HitWall(Vector3 _force, float _rotationDecrease)
+		public void HitWall(Vector3 _force, float _changeInRotation)
 		{
 			ApplyForce(_force);
-			AddRotationSpeed(_rotationDecrease);
-
+			ModifyRotation(_changeInRotation);
 			ReverseArms();
 		}
 
 		public void HitPickUp(float _rotationIncrease)
 		{
-			ModifyVelocity(.5f);
-			AddRotationSpeed(_rotationIncrease);
+			//ModifyVelocity(.5f);
+			ModifyRotation(_rotationIncrease);
 		}
 
 		private void ReverseArms()
@@ -145,14 +152,14 @@ namespace BladeWaltz.Character
 			m_arms.transform.eulerAngles = new Vector3(m_arms.transform.eulerAngles.x + 180f, m_arms.transform.eulerAngles.y, m_arms.transform.eulerAngles.z);
 		}
 
-		public float GetDamage()
-		{
-			return m_rotationSpeed * 0.01f * m_damageModifier;
-		}
-
 		public void TakeDamage(float _damage)
 		{
-			AddRotationSpeed(-_damage);
+			ModifyRotation(-_damage);
+		}
+
+		public float GetDashTimer()
+		{
+			return m_dashTimer;
 		}
 	}
 }
