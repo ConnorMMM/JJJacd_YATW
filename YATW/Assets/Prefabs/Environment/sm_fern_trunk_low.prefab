@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3253528564516448200}
   - component: {fileID: 6718659237172042782}
   - component: {fileID: 6613167667062435797}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sm_fern_trunk_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}

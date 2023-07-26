@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1642354073003921671}
   - component: {fileID: 442638684261416400}
   - component: {fileID: 1112048098642328469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sm_fern_tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
