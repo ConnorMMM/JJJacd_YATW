@@ -23,6 +23,8 @@ namespace BladeWaltz.AI
 		[Tooltip("Keep low, does not change much.")]
 		[SerializeField] public float m_turnSpeed;
 
+		[SerializeField] protected float m_playerRotationIncrease = 50;
+
 		[Header("Weapon Stats")]
 		[SerializeField] public GameObject m_projectilePrefab;
 		[SerializeField] public float m_damage;
@@ -105,20 +107,9 @@ namespace BladeWaltz.AI
 		{
 			if(_col.gameObject.CompareTag("Player"))
 			{
-				//Remove health
-				m_health -= m_characterManager.GetDamage();
-
-				if(m_health <= 0)
-				{
-					m_characterManager.HitPickUp(-m_damage * 0.4f);
-					DeathBehaviour();
-					Destroy(gameObject);
-				}
-				else
-				{
-					Vector3 collisionNormal = _col.GetContact(0).normal;
-					m_characterManager.HitWall(collisionNormal * -40, -m_damage);
-				}
+				m_characterManager.HitEnemy(m_playerRotationIncrease);
+				DeathBehaviour();
+				Destroy(gameObject);
 			}
 		}
 
