@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace BladeWaltz.Character
 {
@@ -16,6 +17,7 @@ namespace BladeWaltz.Character
 		[SerializeField] private GameObject m_arms;
 		[SerializeField] private GameObject m_face;
 		[SerializeField] private ParticleSystem m_wind;
+		[SerializeField] private Slider m_dashUI;
 		private Rigidbody m_rb;
 		
 		[Space(2), Header("Rotation Settings")]
@@ -61,6 +63,9 @@ namespace BladeWaltz.Character
 					m_canDash = true;
 					m_dash.PlayOneShot(m_dashSounds[1]);
 				}
+
+				if(m_dashUI != null)
+					m_dashUI.value = m_dashTimer;
 			}
 			
 			m_rb.AddForce(new Vector3(m_moveInput.x, 0, m_moveInput.y) * m_moveSpeed, ForceMode.Force);
@@ -121,7 +126,6 @@ namespace BladeWaltz.Character
 			if(m_rotationSpeed <= 0)
 			{
 				m_rotationSpeed = 0;
-				//TODO: Add code for death
 				GameManager.Instance.PlayerDeath();
 			}
 			else if(m_rotationSpeed > m_maxRotationSpeed)
@@ -155,11 +159,6 @@ namespace BladeWaltz.Character
 		public void TakeDamage(float _damage)
 		{
 			ModifyRotation(-_damage);
-		}
-
-		public float GetDashTimer()
-		{
-			return m_dashTimer;
 		}
 	}
 }
