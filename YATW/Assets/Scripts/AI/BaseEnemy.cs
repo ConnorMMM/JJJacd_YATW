@@ -60,7 +60,7 @@ namespace BladeWaltz.AI
 		// Update is called once per frame
 		private void FixedUpdate()
 		{
-			m_distance = Vector3.Distance(transform.position, m_player.transform.position);
+			//m_distance = Vector3.Distance(transform.position, m_player.transform.position);
 			
 			transform.position += transform.right * Time.fixedDeltaTime;
 

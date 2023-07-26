@@ -12,6 +12,7 @@ namespace BladeWaltz.AI
 		protected override void Behaviour()
 		{
 			ChaseTarget(); // Seek
+			FaceTarget();
 		}
 
 		protected override void DeathBehaviour()
