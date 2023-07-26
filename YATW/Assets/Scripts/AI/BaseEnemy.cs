@@ -34,9 +34,6 @@ namespace BladeWaltz.AI
 		protected GameObject m_player;
 		protected float m_distance;
 		protected Animator m_animator;
-
-		public bool m_left;
-		public bool m_right;
 		// Start is called before the first frame update
 		private void Awake()
 		{
@@ -111,6 +108,7 @@ namespace BladeWaltz.AI
 				if(m_health <= 0)
 				{
 					m_characterManager.HitPickUp(-m_damage * 0.4f);
+					DeathBehaviour();
 					Destroy(gameObject);
 				}
 				else
@@ -122,5 +120,6 @@ namespace BladeWaltz.AI
 		}
 
 		protected abstract void Behaviour();
+		protected abstract void DeathBehaviour();
 	}
 }

@@ -9,5 +9,10 @@ namespace BladeWaltz.AI
 		{
 			ChaseTarget(); // Seek
 		}
+
+		protected override void DeathBehaviour()
+		{
+			throw new System.NotImplementedException();
+		}
 	}
 }

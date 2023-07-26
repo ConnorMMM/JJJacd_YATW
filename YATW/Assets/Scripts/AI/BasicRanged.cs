@@ -46,5 +46,10 @@ namespace BladeWaltz.AI
 				ChaseTarget();
 			}
 		}
+
+		protected override void DeathBehaviour()
+		{
+			throw new System.NotImplementedException();
+		}
 	}
 }
