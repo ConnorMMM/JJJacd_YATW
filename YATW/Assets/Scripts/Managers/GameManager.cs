@@ -23,6 +23,8 @@ namespace BladeWaltz.Managers
 		[SerializeField, Range(0, 1)] private float m_rangedSpawnChance;
 		[SerializeField] private GameObject m_basicMelee;
 		[SerializeField, Range(0, 1)] private float m_meleeSpawnChance;
+		[SerializeField] private GameObject m_basicBomber;
+		[SerializeField, Range(0, 1)] private float m_bomberSpawnChance;
 
 		[Header("Spawn Settings")] 
 		[SerializeField, Tooltip("If left blank, will use (0,0)")]
@@ -74,8 +76,11 @@ namespace BladeWaltz.Managers
 
 		private void SpawnEnemy()
 		{
-			float rangedChance = m_rangedSpawnChance / (m_rangedSpawnChance + m_meleeSpawnChance);
-			float meleeChance = m_meleeSpawnChance / (m_rangedSpawnChance + m_meleeSpawnChance);
+			float totalChance = m_rangedSpawnChance + m_meleeSpawnChance + m_bomberSpawnChance;
+			
+			float rangedChance = m_rangedSpawnChance / totalChance;
+			float meleeChance = m_meleeSpawnChance / totalChance;
+			float bomberChance = m_bomberSpawnChance / totalChance;
 
 			float rndNum = Random.value;
 			if(rndNum <= rangedChance)
@@ -85,6 +90,10 @@ namespace BladeWaltz.Managers
 			else if(rndNum <= rangedChance + meleeChance)
 			{
 				Instantiate(m_basicMelee, GetRandomSpawnPoint(), Quaternion.identity);
+			}
+			else if(rndNum <= rangedChance + meleeChance + bomberChance)
+			{
+				Instantiate(m_basicBomber, GetRandomSpawnPoint(), Quaternion.identity);
 			}
 		}
 
