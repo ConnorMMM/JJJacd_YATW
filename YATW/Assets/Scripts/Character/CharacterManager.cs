@@ -38,8 +38,9 @@ namespace BladeWaltz.Character
 		private bool m_canDash;
 
         [Space(2), Header("Audio Settings")]
-        [SerializeField] private AudioSource m_dash;
+        [SerializeField] private AudioSource m_dashSource;
 		[SerializeField] private AudioClip[] m_dashSounds;
+        [SerializeField] private AudioSource m_rotationSource;
 		[SerializeField] private AudioMixer m_playerMixer;
 		
 		private void Awake()
@@ -61,7 +62,7 @@ namespace BladeWaltz.Character
 				{
 					m_dashTimer = 1;
 					m_canDash = true;
-					m_dash.PlayOneShot(m_dashSounds[1]);
+					m_dashSource.PlayOneShot(m_dashSounds[1]);
 				}
 
 				if(m_dashUI != null)
@@ -98,7 +99,7 @@ namespace BladeWaltz.Character
 				m_wind.Play();
 				m_wind.transform.eulerAngles = new Vector3(0, degree, 0);
 				
-				m_dash.PlayOneShot(m_dashSounds[0]);
+				m_dashSource.PlayOneShot(m_dashSounds[0]);
 				m_dashTimer = 0;
 				m_canDash = false;
 				//StartCoroutine(DashCooldown());
@@ -110,7 +111,7 @@ namespace BladeWaltz.Character
 			m_canDash = false;
 			yield return new WaitForSeconds(m_dashCooldown);
 			m_canDash = true;
-			m_dash.PlayOneShot(m_dashSounds[1]);
+			m_dashSource.PlayOneShot(m_dashSounds[1]);
 		}
 		
 
@@ -126,6 +127,7 @@ namespace BladeWaltz.Character
 			if(m_rotationSpeed <= 0)
 			{
 				m_rotationSpeed = 0;
+				m_rotationSource.Stop();
 				GameManager.Instance.PlayerDeath();
 			}
 			else if(m_rotationSpeed > m_maxRotationSpeed)
@@ -159,6 +161,19 @@ namespace BladeWaltz.Character
 		public void TakeDamage(float _damage)
 		{
 			ModifyRotation(-_damage);
+		}
+
+		public void ToggleSound(bool _state)
+		{
+			if(_state)
+			{
+				m_rotationSource.UnPause();
+			}
+			else
+			{
+				m_rotationSource.Pause();
+			}
+			
 		}
 	}
 }
