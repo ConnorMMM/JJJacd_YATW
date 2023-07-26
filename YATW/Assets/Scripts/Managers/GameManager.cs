@@ -162,6 +162,11 @@ namespace BladeWaltz.Managers
 			float seconds = Mathf.FloorToInt(_timeToDisplay % 60);
 
 			m_timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+			if(minutes == 0 && seconds == 0)
+			{
+				PlayerDeath();
+			}
 		}
 	}
 }
