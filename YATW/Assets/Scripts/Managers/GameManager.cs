@@ -18,7 +18,9 @@ namespace BladeWaltz.Managers
 		[Tooltip("Starting game time in minutes.")]
 		public float m_startTime;
 		[Tooltip("Time until game ends.")]
-		public float m_timer;
+		public int m_timer = 0;
+
+		private float m_timeValue; 
 
 		[Header("AI Settings")]
 		[SerializeField] private GameObject m_basicRanged;
@@ -44,20 +46,35 @@ namespace BladeWaltz.Managers
 
 		public GameObject m_player;
 
+		[SerializeField] private TMP_Text m_timerText;
 		[SerializeField] private GameObject m_finalPrompt;
 
 		protected override void Awake()
 		{
 			Time.timeScale = 1.0f;
-			m_timer = m_startTime * 60;
+			m_timer = (int)m_startTime * 60;
 			StartCoroutine(SpawningEnemies());
 			StartCoroutine(SpawnRateIncrease());
+			m_timeValue = 90;
+		}
+
+		private void Update()
+		{
+			if(m_timeValue > 0)
+			{
+				m_timeValue -= Time.deltaTime;
+			}
+			else
+			{
+				m_timeValue = 0;
+			}
+			
+			DisplayTime(m_timeValue);
 		}
 
 		// Update is called once per frame
 		private void FixedUpdate()
 		{
-			m_timer -= Time.deltaTime;
 		}
 
 		private IEnumerator SpawningEnemies()
@@ -124,13 +141,26 @@ namespace BladeWaltz.Managers
 
 		public void AddTime(float _time)
 		{
-			m_timer += _time;
+			//m_timer += _time;
 		}
 
 		public void PlayerDeath()
 		{
 			Time.timeScale = 0.0f;
 			m_finalPrompt.SetActive(true);
+		}
+
+		private void DisplayTime(float _timeToDisplay)
+		{
+			if(_timeToDisplay < 0)
+			{
+				_timeToDisplay = 0;
+			}
+
+			float minutes = Mathf.FloorToInt(_timeToDisplay / 60);
+			float seconds = Mathf.FloorToInt(_timeToDisplay % 60);
+
+			m_timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 		}
 	}
 }
